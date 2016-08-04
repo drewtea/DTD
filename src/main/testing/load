@@ -1,0 +1,21 @@
+scala>val sqlContext = new HiveContext(sc)
+scala>val df = sqlContext.read.format("com.databricks.spark.xml").option("rowTagoad("/user/horf/pom.xml")
+scala>df.registerTempTable("xmldf")
+scala>val xmldfhive = sqlContext.sql("selectfactId,build,dependencies,modelversion,name,packaging,url,version,groupid,parent from xmldf")
+scala>xmldfhive
+/*
+xmldfhive: org.apache.spark.sql.DataFrame =
+[artifactId: string,
+build: struct<finalName:string>,
+dependencies: struct<dependency:array<struct<artifactId:string,groupId:string,scope:string,version:string>>>,
+groupId: string,
+modelVersion: string,
+name: string,
+packaging: string,
+parent: struct<artifactId:string,groupId:string,version:string>,
+url: string,
+version: string,
+xmlns: string,
+xmlns:xsi: string,
+xsi:schemaLocation: string]
+*/
